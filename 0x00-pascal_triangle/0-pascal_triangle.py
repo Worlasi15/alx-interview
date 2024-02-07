@@ -13,6 +13,7 @@ def pascal_triangle(n):
 
     return triangle
 
+
 if __name__ == "__main__":
     n = 5
     result = pascal_triangle(n)
