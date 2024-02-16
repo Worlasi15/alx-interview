@@ -21,6 +21,7 @@ def canUnlockAll(boxes):
     # Check if all boxes are opened
     return len(opened_boxes) == len(boxes)
 
+
 # Example usage:
 boxes1 = [[1], [2], [3], [4], []]
 print(canUnlockAll(boxes1))  # Output: True
