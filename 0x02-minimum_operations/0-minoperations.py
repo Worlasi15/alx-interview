@@ -1,28 +1,25 @@
 #!/usr/bin/python3
+""" Calculating minoperations"""
+
+
 def minOperations(n):
-    if n <= 1:
+    """
+    minOperations
+    Gets fewest # of operations needed to result in exactly n H characters
+    """
+    # all outputs should be at least 2 char: (min, Copy All => Paste)
+    if (n < 2):
         return 0
-
-    # Initialize an array to store the minimum operations required for each number
-    dp = [float('inf')] * (n + 1)
-    dp[1] = 0
-
-    for i in range(2, n + 1):
-        # Check if i is prime
-        for j in range(2, int(i ** 0.5) + 1):
-            if i % j == 0:
-                # If i is divisible by j, update dp[i] with the minimum operations
-                dp[i] = min(dp[i], dp[j] + i // j)
-                break
-
-        # If i is prime, update dp[i] with the minimum operations
-        dp[i] = min(dp[i], i)
-
-    return dp[n] if dp[n] != float('inf') else 0
-
-# Test cases
-n1 = 4
-n2 = 12
-
-print("Min # of operations to reach {} char: {}".format(n1, minOperations(n1)))
-print("Min # of operations to reach {} char: {}".format(n2, minOperations(n2)))
+    ops, root = 0, 2
+    while root <= n:
+        # if n evenly divides by root
+        if n % root == 0:
+            # total even-divisions by root = total operations
+            ops += root
+            # set n to the remainder
+            n = n / root
+            # reduce root to find remaining smaller vals that evenly-divide n
+            root -= 1
+        # increment root until it evenly-divides n
+        root += 1
+    return ops
