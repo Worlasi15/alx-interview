@@ -10,7 +10,7 @@ def print_statistics(total_size, status_counts):
 
 def signal_handler(sig, frame):
     print_statistics(total_size, status_counts)
-    sys.exit(0)
+    raise KeyboardInterrupt
 
 signal.signal(signal.SIGINT, signal_handler)
 
