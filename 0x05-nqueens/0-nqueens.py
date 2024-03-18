@@ -1,4 +1,5 @@
-mport sys
+#!/usr/bin/python3
+import sys
 
 def is_safe(board, row, col, N):
     # Check this row on the left side
