@@ -18,7 +18,12 @@ def is_safe(board, row, col, N):
 
 def solve_n_queens_util(board, col, N, result):
     if col == N:
-        result.append([[row, col] for row in range(N) if board[row][col] == 1])
+        queens_positions = []
+        for i in range(N):
+            for j in range(N):
+                if board[i][j] == 1:
+                    queens_positions.append([i, j])
+        result.append(queens_positions)
         return True
     
     res = False
@@ -45,7 +50,8 @@ def solve_n_queens(N):
     board = [[0 for _ in range(N)] for _ in range(N)]
     result = []
     solve_n_queens_util(board, 0, N, result)
-    print_solution(result)
+    for sol in result:
+        print(sol)
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
