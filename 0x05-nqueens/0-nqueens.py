@@ -41,10 +41,10 @@ def print_solution(result):
 
 def solve_n_queens(N):
     if not isinstance(N, int):
-        print("N must be a number", file=sys.stderr)
+        print("N must be a number")
         sys.exit(1)
     if N < 4:
-        print("N must be at least 4", file=sys.stderr)
+        print("N must be at least 4")
         sys.exit(1)
     
     board = [[0 for _ in range(N)] for _ in range(N)]
@@ -59,12 +59,12 @@ def solve_n_queens(N):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: nqueens N", file=sys.stderr)
+        print("Usage: nqueens N")
         sys.exit(1)
     
     try:
         N = int(sys.argv[1])
         solve_n_queens(N)
     except ValueError:
-        print("N must be a number", file=sys.stderr)
+        print("N must be a number")
         sys.exit(1)
