@@ -50,8 +50,12 @@ def solve_n_queens(N):
     board = [[0 for _ in range(N)] for _ in range(N)]
     result = []
     solve_n_queens_util(board, 0, N, result)
-    for sol in result:
-        print(sol)
+    
+    if not result:
+        print("[]")
+    else:
+        for sol in result:
+            print(sol)
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
