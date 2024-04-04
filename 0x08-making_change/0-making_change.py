@@ -1,35 +1,23 @@
 #!/usr/bin/python3
-"""
-Module for making change using the fewest number of coins
-"""
+"""A function to determine the fewest number of coins needed
+   to meet a given amount total"""
 
 
 def makeChange(coins, total):
-    """
-    Determines the fewest number of coins needed to meet a given total amount
-
-    Args:
-        coins (list): List of coin denominations
-        total (int): Total amount
-
-    Returns:
-        int: Fewest number of coins needed to meet the total amount,
-             or -1 if the total cannot be met by any number of coins
+    """This function will take a list of coins and use
+       that to calculate how much change the total will require
     """
     if total <= 0:
         return 0
 
-    # Initialize memoization table with max value
-    memo = [float('inf')] * (total + 1)
-    memo[0] = 0
+    dp = [float('inf')] * (total + 1)
+    dp[0] = 0
 
-    # Iterate through each coin denomination
     for coin in coins:
-        # Update memoization table for each amount from coin to total
-        for amount in range(coin, total + 1):
-            memo[amount] = min(memo[amount], memo[amount - coin] + 1)
+        for i in range(coin, total + 1):
+            dp[i] = min(dp[i], dp[i - coin] + 1)
 
-    return memo[total] if memo[total] != float('inf') else -1
+    return dp[total] if dp[total] != float('inf') else -1
 
 
 if __name__ == "__main__":
