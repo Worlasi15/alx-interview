@@ -19,14 +19,17 @@ def makeChange(coins, total):
     if total <= 0:
         return 0
 
-    dp = [float('inf')] * (total + 1)
-    dp[0] = 0
+    # Initialize memoization table with max value
+    memo = [float('inf')] * (total + 1)
+    memo[0] = 0
 
+    # Iterate through each coin denomination
     for coin in coins:
-        for i in range(coin, total + 1):
-            dp[i] = min(dp[i], dp[i - coin] + 1)
+        # Update memoization table for each amount from coin to total
+        for amount in range(coin, total + 1):
+            memo[amount] = min(memo[amount], memo[amount - coin] + 1)
 
-    return dp[total] if dp[total] != float('inf') else -1
+    return memo[total] if memo[total] != float('inf') else -1
 
 
 if __name__ == "__main__":
